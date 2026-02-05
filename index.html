@@ -3,149 +3,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Катя Кабышева | Редактор и контент-менеджер</title>
+    <title>Катя Кабышева | Редактор</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #F9F7F2;
-            --text-color: #1a1a1a;
-            --border-color: #e2e0db;
+            --bg-color: #F4F1EA; 
+            --accent-color: #3A86FF; 
+            --text-color: #3A86FF;
+            --border-color: rgba(58, 134, 255, 0.3);
         }
+
         * { box-sizing: border-box; }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
-            line-height: 1.5;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
+
         section {
             padding: 80px 20px;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            min-height: 50vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
-        h1 { font-size: clamp(2.5rem, 8vw, 4rem); line-height: 1.1; margin-bottom: 20px; font-weight: 600; letter-spacing: -0.03em; }
-        h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 40px; font-weight: 600; }
-        h3 { font-size: 1.3rem; margin: 0; font-weight: 600; }
-        .subtitle { font-size: 1.5rem; color: #666; margin-bottom: 30px; font-weight: 300; }
-        .hero-list { list-style: none; padding: 0; font-size: 1.2rem; margin-bottom: 40px; font-weight: 300; }
-        .hero-list li { margin-bottom: 10px; }
-        .btn {
+
+        /* Первый экран */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            min-height: 80vh;
+        }
+
+        .hero-text { flex: 1; }
+        .hero-photo {
+            flex: 0 0 350px;
+            height: 450px;
+            background: #e5e2d9;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 { font-size: 3.5rem; line-height: 1.1; margin: 0 0 20px; font-weight: 600; letter-spacing: -0.04em; }
+        h2 { font-size: 2.2rem; margin-bottom: 40px; font-weight: 400; border-top: 1px solid var(--border-color); padding-top: 20px; }
+
+        .btn-small {
             display: inline-block;
-            background: var(--text-color);
-            color: #fff;
-            padding: 18px 35px;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 10px 24px;
             text-decoration: none;
             border-radius: 100px;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-        .btn:hover { transform: translateY(-2px); }
-        .timeline-item { border-bottom: 1px solid var(--border-color); padding: 25px 0; }
-        details summary {
+        .btn-small:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+        }
+
+        .tasks-list {
             list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            font-weight: 300;
+        }
+        .tasks-list li::before {
+            content: "✦ ";
+            margin-right: 10px;
+        }
+
+        .tools-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tag {
+            border: 1px solid var(--border-color);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .article-link {
+            display: block;
+            padding: 24px 0;
+            text-decoration: none;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: pointer;
-            outline: none;
+            font-weight: 300;
         }
-        details summary::-webkit-details-marker { display: none; }
-        .company-name { flex: 1; }
-        .year { color: #888; font-size: 1rem; text-align: right; min-width: 120px; }
-        .details-content { padding-top: 15px; color: #444; font-size: 1.1rem; max-width: 650px; font-weight: 300; }
-        footer { text-align: center; padding: 60px 20px; color: #aaa; font-size: 0.9rem; }
+        .article-link:hover { padding-left: 10px; transition: 0.3s; }
+
+        /* Финальное фото */
+        .footer-photo {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .footer-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 100px 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 40px; min-height: auto; }
+            .hero-photo { flex: 0 0 300px; width: 100%; }
+            .tasks-list { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
 
-    <section>
-        <h1>Катя Кабышева</h1>
-        <div class="subtitle">редактор и контент-менеджер</div>
-        <ul class="hero-list">
-            <li>• Пишу и редактирую: статьи, лендинги, UX</li>
-            <li>• Разрабатываю гайды</li>
-            <li>• Выступаю и провожу консультации</li>
-        </ul>
-        <a href="https://t.me/kabysheva" target="_blank" class="btn">Написать в телеграме</a>
-    </section>
-
-    <section>
-        <h2>Помогаю бизнесу с коммуникациями</h2>
-        
-        <div class="timeline">
-            <details class="timeline-item">
-                <summary>
-                    <div class="company-name"><h3>«Бумага»</h3><div>Продуктовый редактор</div></div>
-                    <div class="year">2025 — сейчас</div>
-                </summary>
-                <div class="details-content">Отвечаю за все тексты Paper VPN: микрокопи в приложениях и на вебе, лендинги, посты, рассылки. С нуля выстраиваю процесс UX-редактуры.</div>
-            </details>
-
-            <details class="timeline-item">
-                <summary>
-                    <div class="company-name"><h3>Бюро «Понятно»</h3><div>Выпускающий редактор, проджект</div></div>
-                    <div class="year">2023 — сейчас</div>
-                </summary>
-                <div class="details-content">Веду проекты, клиенты — крупный банк и одна из главных российских IT-компаний. Слежу за порядком, считаю деньги. Общаюсь и договариваюсь. Редактирую тексты.</div>
-            </details>
-
-            <details class="timeline-item">
-                <summary>
-                    <div class="company-name"><h3>РбК Тренды</h3><div>Внештатный автор</div></div>
-                    <div class="year">2023 — сейчас</div>
-                </summary>
-                <div class="details-content">Для души пишу про технологии и их влияние на общество.</div>
-            </details>
-
-            <details class="timeline-item">
-                <summary>
-                    <div class="company-name"><h3>Райффайзен Банк</h3><div>Коммуникационный редактор</div></div>
-                    <div class="year">2022 — 2023</div>
-                </summary>
-                <div class="details-content">Отвечала за тексты в команде маркетинга крупного корпоративного бизнеса. Проводила лекции по тон оф войс и чистым коммуникациям. Брала UX-задачи.</div>
-            </details>
-
-            <details class="timeline-item">
-                <summary>
-                    <div class="company-name"><h3>ВКонтакте</h3><div>Редактор</div></div>
-                    <div class="year">2020 — 2023</div>
-                </summary>
-                <div class="details-content">Пришла как автор пресс-релизов, ушла редактором кучи направлений. Менеджерила выпуск статей, ставила задачи авторам и следила за тем, чтобы тексты были чистыми, а ребята из соседних команд — довольными.</div>
-            </details>
-
-            <details class="timeline-item">
-                <summary>
-                    <div class="company-name"><h3>Selectel</h3><div>Младший продуктовый редактор</div></div>
-                    <div class="year">2022 — 2023</div>
-                </summary>
-                <div class="details-content">Занималась развитием сайта. Узнала, как работать по спринтам и общаться с разработчиками.</div>
-            </details>
-
-            <details class="timeline-item">
-                <summary>
-                    <div class="company-name"><h3>iTrend</h3><div>PR-менеджер</div></div>
-                    <div class="year">2017 — 2020</div>
-                </summary>
-                <div class="details-content">Начинала карьеру в PR-агентстве, которое специализируется на IT-компаниях. Там научилась писать и редактировать пресс-релизы и статьи.</div>
-            </details>
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Катя Кабышева</h1>
+            <p style="font-size: 1.4rem; font-weight: 300; margin-bottom: 30px;">редактор и контент-менеджер</p>
+            <ul style="list-style: none; padding: 0; margin-bottom: 40px; font-weight: 300;">
+                <li>✦ Пишу и редактирую: статьи, лендинги, UX</li>
+                <li>✦ Разрабатываю гайды</li>
+                <li>✦ Выступаю и провожу консультации</li>
+            </ul>
+            <a href="https://t.me/kabysheva" class="btn-small">Написать в телеграме</a>
+        </div>
+        <div class="hero-photo">
+            <img src="me1.jpg" alt="Катя Кабышева">
         </div>
     </section>
 
     <section>
-        <h2>Помогаю начинающим авторам</h2>
-        <p style="font-size: 1.2rem; font-weight: 300;">Могу посмотреть ваши тексты и посоветовать, как их улучшить. Была экспертом на курсе «Нетологии». Редактирую мягко, но уверенно.</p>
+        <h2>С какими задачами могу помочь</h2>
+        <ul class="tasks-list">
+            <li>Наладить регулярный выпуск статей</li>
+            <li>Настроить работу команды авторов</li>
+            <li>Отредактировать и написать текст</li>
+            <li>Обновить гайды</li>
+            <li>Провести обучение</li>
+            <li>Помочь с упаковкой смыслов</li>
+        </ul>
     </section>
 
-    <footer>
-        © 2025 Катя Кабышева
+    <section>
+        <h2>Статьи</h2>
+        <a href="#" class="article-link"><span>Название твоей статьи №1</span> <span>→</span></a>
+        <a href="#" class="article-link"><span>Кейс: работа со смыслами в продукте</span> <span>→</span></a>
+        <a href="#" class="article-link"><span>Текст про ИИ для редакторов</span> <span>→</span></a>
+    </section>
+
+    <section>
+        <h2>Инструменты</h2>
+        <div class="tools-tags">
+            <span class="tag">Figma</span>
+            <span class="tag">Яндекс Метрика</span>
+            <span class="tag">Google Analytics</span>
+            <span class="tag">Qlik</span>
+            <span class="tag">WordPress</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>Выступаю на мероприятиях</h2>
+        <p style="font-size: 1.2rem; font-weight: 300; max-width: 700px;">
+            Рассказываю о правилах коммуникации и конкретных инструментах, в том числе ИИ. Провожу лекции онлайн и офлайн в Белграде.
+        </p>
+    </section>
+
+    <section class="cta-section">
+        <div class="footer-photo">
+            <img src="me2.jpg" alt="Катя">
+        </div>
+        <p style="font-size: 1.5rem; font-weight: 300; margin-bottom: 30px;">✦ Напишите мне — обсудим условия</p>
+        <a href="https://t.me/kabysheva" class="btn-small">Написать в телеграме</a>
+    </section>
+
+    <footer style="padding: 40px; text-align: center; font-size: 0.8rem; opacity: 0.6;">
+        © 2026 Катя Кабышева
     </footer>
 
 </body>
