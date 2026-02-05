@@ -23,7 +23,7 @@
             -webkit-font-smoothing: antialiased;
         }
         section {
-            padding: 100px 20px;
+            padding: 80px 20px;
             max-width: 800px;
             margin: 0 auto;
             min-height: 50vh;
@@ -57,4 +57,96 @@
             cursor: pointer;
             outline: none;
         }
-        details summary::-webkit
+        details summary::-webkit-details-marker { display: none; }
+        .company-name { flex: 1; }
+        .year { color: #888; font-size: 1rem; text-align: right; min-width: 120px; }
+        .details-content { padding-top: 15px; color: #444; font-size: 1.1rem; max-width: 650px; font-weight: 300; }
+        footer { text-align: center; padding: 60px 20px; color: #aaa; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <section>
+        <h1>Катя Кабышева</h1>
+        <div class="subtitle">редактор и контент-менеджер</div>
+        <ul class="hero-list">
+            <li>• Пишу и редактирую: статьи, лендинги, UX</li>
+            <li>• Разрабатываю гайды</li>
+            <li>• Выступаю и провожу консультации</li>
+        </ul>
+        <a href="https://t.me/kabysheva" target="_blank" class="btn">Написать в телеграме</a>
+    </section>
+
+    <section>
+        <h2>Помогаю бизнесу с коммуникациями</h2>
+        
+        <div class="timeline">
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>«Бумага»</h3><div>Продуктовый редактор</div></div>
+                    <div class="year">2025 — сейчас</div>
+                </summary>
+                <div class="details-content">Отвечаю за все тексты Paper VPN: микрокопи в приложениях и на вебе, лендинги, посты, рассылки. С нуля выстраиваю процесс UX-редактуры.</div>
+            </details>
+
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>Бюро «Понятно»</h3><div>Выпускающий редактор, проджект</div></div>
+                    <div class="year">2023 — сейчас</div>
+                </summary>
+                <div class="details-content">Веду проекты, клиенты — крупный банк и одна из главных российских IT-компаний. Слежу за порядком, считаю деньги. Общаюсь и договариваюсь. Редактирую тексты.</div>
+            </details>
+
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>РбК Тренды</h3><div>Внештатный автор</div></div>
+                    <div class="year">2023 — сейчас</div>
+                </summary>
+                <div class="details-content">Для души пишу про технологии и их влияние на общество.</div>
+            </details>
+
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>Райффайзен Банк</h3><div>Коммуникационный редактор</div></div>
+                    <div class="year">2022 — 2023</div>
+                </summary>
+                <div class="details-content">Отвечала за тексты в команде маркетинга крупного корпоративного бизнеса. Проводила лекции по тон оф войс и чистым коммуникациям. Брала UX-задачи.</div>
+            </details>
+
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>ВКонтакте</h3><div>Редактор</div></div>
+                    <div class="year">2020 — 2023</div>
+                </summary>
+                <div class="details-content">Пришла как автор пресс-релизов, ушла редактором кучи направлений. Менеджерила выпуск статей, ставила задачи авторам и следила за тем, чтобы тексты были чистыми, а ребята из соседних команд — довольными.</div>
+            </details>
+
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>Selectel</h3><div>Младший продуктовый редактор</div></div>
+                    <div class="year">2022 — 2023</div>
+                </summary>
+                <div class="details-content">Занималась развитием сайта. Узнала, как работать по спринтам и общаться с разработчиками.</div>
+            </details>
+
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>iTrend</h3><div>PR-менеджер</div></div>
+                    <div class="year">2017 — 2020</div>
+                </summary>
+                <div class="details-content">Начинала карьеру в PR-агентстве, которое специализируется на IT-компаниях. Там научилась писать и редактировать пресс-релизы и статьи.</div>
+            </details>
+        </div>
+    </section>
+
+    <section>
+        <h2>Помогаю начинающим авторам</h2>
+        <p style="font-size: 1.2rem; font-weight: 300;">Могу посмотреть ваши тексты и посоветовать, как их улучшить. Была экспертом на курсе «Нетологии». Редактирую мягко, но уверенно.</p>
+    </section>
+
+    <footer>
+        © 2025 Катя Кабышева
+    </footer>
+
+</body>
+</html>
