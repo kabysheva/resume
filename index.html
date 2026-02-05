@@ -50,14 +50,11 @@
             overflow: hidden;
             border: 1px solid var(--border-color);
         }
-        .hero-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
 
         h1 { font-size: 3.5rem; line-height: 1.1; margin: 0 0 20px; font-weight: 600; letter-spacing: -0.04em; }
-        h2 { font-size: 2.2rem; margin-bottom: 40px; font-weight: 400; border-top: 1px solid var(--border-color); padding-top: 20px; }
+        h2 { font-size: 2.2rem; margin-bottom: 40px; font-weight: 400; border-top: 1px solid var(--border-color); padding-top: 20px; position: relative; }
+        h2::after { content: "✦"; position: absolute; right: 0; top: 20px; font-size: 1.2rem; }
 
         .btn-small {
             display: inline-block;
@@ -71,77 +68,42 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
-        .btn-small:hover {
-            background: var(--accent-color);
-            color: var(--bg-color);
-            transform: translateY(-2px);
-        }
+        .btn-small:hover { background: var(--accent-color); color: var(--bg-color); transform: translateY(-2px); }
 
-        .tasks-list {
+        /* Таймлайн */
+        .timeline-item { border-bottom: 1px solid var(--border-color); padding: 25px 0; }
+        details summary {
             list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            font-weight: 300;
-        }
-        .tasks-list li::before {
-            content: "✦ ";
-            margin-right: 10px;
-        }
-
-        .tools-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .tag {
-            border: 1px solid var(--border-color);
-            padding: 6px 18px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 300;
-        }
-
-        .article-link {
-            display: block;
-            padding: 24px 0;
-            text-decoration: none;
-            color: var(--text-color);
-            border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 300;
+            cursor: pointer;
+            outline: none;
         }
-        .article-link:hover { padding-left: 10px; transition: 0.3s; }
+        details summary::-webkit-details-marker { display: none; }
+        .company-name h3 { margin: 0; font-size: 1.3rem; font-weight: 600; }
+        .year { color: var(--accent-color); font-size: 0.9rem; text-align: right; min-width: 120px; font-weight: 300; }
+        .details-content { padding-top: 15px; color: var(--text-color); font-size: 1.1rem; max-width: 650px; font-weight: 300; opacity: 0.9; }
+
+        /* Облако тегов */
+        .tools-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .tag { border: 1px solid var(--accent-color); padding: 8px 20px; border-radius: 50px; font-size: 1rem; font-weight: 300; }
+
+        /* Цитата / Отзыв */
+        .quote { font-style: italic; border-left: 2px solid var(--accent-color); padding-left: 30px; margin: 30px 0; font-size: 1.2rem; font-weight: 300; }
 
         /* Финальное фото */
-        .footer-photo {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 30px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-        .footer-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .footer-photo { width: 160px; height: 160px; margin: 0 auto 30px; border-radius: 50%; overflow: hidden; border: 1px solid var(--border-color); }
+        .footer-photo img { width: 100%; height: 100%; object-fit: cover; }
 
-        .cta-section {
-            text-align: center;
-            padding: 100px 20px;
-            border-top: 1px solid var(--border-color);
-        }
+        .cta-section { text-align: center; padding: 100px 20px; border-top: 1px solid var(--border-color); }
 
         @media (max-width: 768px) {
             .hero { flex-direction: column-reverse; text-align: center; padding-top: 40px; min-height: auto; }
             .hero-photo { flex: 0 0 300px; width: 100%; }
-            .tasks-list { grid-template-columns: 1fr; }
             h1 { font-size: 2.5rem; }
+            details summary { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .year { text-align: left; }
         }
     </style>
 </head>
@@ -164,26 +126,69 @@
     </section>
 
     <section>
-        <h2>С какими задачами могу помочь</h2>
-        <ul class="tasks-list">
-            <li>Наладить регулярный выпуск статей</li>
-            <li>Настроить работу команды авторов</li>
-            <li>Отредактировать и написать текст</li>
-            <li>Обновить гайды</li>
-            <li>Провести обучение</li>
-            <li>Помочь с упаковкой смыслов</li>
-        </ul>
+        <h2>Помогаю бизнесу с коммуникациями</h2>
+        
+        <div class="timeline">
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>«Бумага»</h3><div>Продуктовый редактор</div></div>
+                    <div class="year">2025 — сейчас</div>
+                </summary>
+                <div class="details-content">Отвечаю за все тексты Paper VPN: микрокопи в приложениях и на вебе, лендинги, посты, рассылки. С нуля выстраиваю процесс UX-редактуры.</div>
+            </details>
+
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>Бюро «Понятно»</h3><div>Выпускающий редактор, проджект</div></div>
+                    <div class="year">2023 — сейчас</div>
+                </summary>
+                <div class="details-content">Веду проекты, клиенты — крупный банк и одна из главных российских IT-компаний. Слежу за порядком, считаю деньги. Общаюсь и договариваюсь. Редактирую тексты.</div>
+            </details>
+
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>РбК Тренды</h3><div>Внештатный автор</div></div>
+                    <div class="year">2023 — сейчас</div>
+                </summary>
+                <div class="details-content">Для души пишу про технологии и их влияние на общество.</div>
+            </details>
+
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>Райффайзен Банк</h3><div>Коммуникационный редактор</div></div>
+                    <div class="year">2022 — 2023</div>
+                </summary>
+                <div class="details-content">Отвечала за тексты в команде маркетинга крупного корпоративного бизнеса. Проводила лекции по тон оф войс и чистым коммуникациям. Брала UX-задачи.</div>
+            </details>
+
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>ВКонтакте</h3><div>Редактор</div></div>
+                    <div class="year">2020 — 2023</div>
+                </summary>
+                <div class="details-content">Пришла как автор пресс-релизов, ушла редактором кучи направлений. Менеджерила выпуск статей, ставила задачи авторам и следила за тем, чтобы тексты были чистыми, а ребята из соседних команд — довольными.</div>
+            </details>
+
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>Selectel</h3><div>Младший продуктовый редактор</div></div>
+                    <div class="year">2022 — 2023</div>
+                </summary>
+                <div class="details-content">Занималась развитием сайта. Узнала, как работать по спринтам и общаться с разработчиками.</div>
+            </details>
+
+            <details class="timeline-item">
+                <summary>
+                    <div class="company-name"><h3>iTrend</h3><div>PR-менеджер</div></div>
+                    <div class="year">2017 — 2020</div>
+                </summary>
+                <div class="details-content">Начинала карьеру в PR-агентстве, которое специализируется на IT-компаниях. Там научилась писать и редактировать пресс-релизы и статьи.</div>
+            </details>
+        </div>
     </section>
 
     <section>
-        <h2>Статьи</h2>
-        <a href="#" class="article-link"><span>Название твоей статьи №1</span> <span>→</span></a>
-        <a href="#" class="article-link"><span>Кейс: работа со смыслами в продукте</span> <span>→</span></a>
-        <a href="#" class="article-link"><span>Текст про ИИ для редакторов</span> <span>→</span></a>
-    </section>
-
-    <section>
-        <h2>Инструменты</h2>
+        <p style="font-weight: 600; margin-bottom: 10px;">Какие инструменты использую</p>
         <div class="tools-tags">
             <span class="tag">Figma</span>
             <span class="tag">Яндекс Метрика</span>
@@ -194,9 +199,19 @@
     </section>
 
     <section>
+        <h2>Помогаю начинающим авторам</h2>
+        <p style="font-size: 1.2rem; font-weight: 300; max-width: 700px;">
+            Могу посмотреть ваши тексты и посоветовать, как их улучшить.
+        </p>
+        <div class="quote">
+            Была экспертом на курсе «Нетологии». Коллеги говорят, что я редактирую мягко, но уверенно. Кто-то даже называл меня любимым редактором!
+        </div>
+    </section>
+
+    <section>
         <h2>Выступаю на мероприятиях</h2>
         <p style="font-size: 1.2rem; font-weight: 300; max-width: 700px;">
-            Рассказываю о правилах коммуникации и конкретных инструментах, в том числе ИИ. Провожу лекции онлайн и офлайн в Белграде.
+            Рассказываю о правилах коммуникации и конкретных инструментах, в том числе ИИ. Онлайн и офлайн в Белграде.
         </p>
     </section>
 
@@ -204,12 +219,12 @@
         <div class="footer-photo">
             <img src="me2.jpg" alt="Катя">
         </div>
-        <p style="font-size: 1.5rem; font-weight: 300; margin-bottom: 30px;">✦ Напишите мне — обсудим условия</p>
-        <a href="https://t.me/kabysheva" class="btn-small">Написать в телеграме</a>
+        <p style="font-size: 1.5rem; font-weight: 300; margin-bottom: 30px;">Напишите мне — обсудим условия</p>
+        <a href="https://t.me/kabysheva" target="_blank" class="btn-small">Написать в телеграме</a>
     </section>
 
     <footer style="padding: 40px; text-align: center; font-size: 0.8rem; opacity: 0.6;">
-        © 2026 Катя Кабышева
+        ✦ 2026 Катя Кабышева
     </footer>
 
 </body>
